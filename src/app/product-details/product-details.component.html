@@ -1,5 +1,5 @@
 <h2>Product Details</h2>
-<div *ngIf="product"> <!-- siempre que se buscan cosas, aseguarlo de esta manera -->
+<div *ngIf="product" > <!-- siempre que se buscan cosas, aseguarlo de esta manera -->
     <h3>{{ product.name }}</h3>
     <h4>{{ product.price | currency }}</h4>
     <p>{{ product.description }}</p>
