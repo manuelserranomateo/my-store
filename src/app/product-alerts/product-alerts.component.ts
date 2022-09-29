@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-// import { Product } from '../products'; // Importamos la INTERFAZ Product
+import { Product } from '../products';
 
 
 
@@ -10,7 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ProductAlertsComponent implements OnInit {
                       // Product
-  @Input() product!: { id: number, name: string, price: number, description: string } | undefined; /* Esto es para definir el product y product.price que utilizamos en el HTML
+  @Input() product!: Product ; /* Esto es para definir el product y product.price que utilizamos en el HTML
                                              la ! indica que no se va a inicializar ahi,  los : es porque se establece 
                                              el tipo de product, no es una asignacion */
   @Output() notify = new EventEmitter(); // Aqui es =

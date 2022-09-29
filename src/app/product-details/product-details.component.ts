@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Product, products } from '../products'; // Importamos la Interfaz y la lista de productos
+import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router'; // Con esto obtenemos la direccion del path para extraer el Id
-import { CartService } from '../cart.service'; // Usar Ctrl . sobre el error para importar automaticamente
-import { ProductsService } from '../products.service';
-import { Observable, tap } from 'rxjs';
 
+import { Product } from '../products'; 
+import { CartService } from '../cart.service'; 
+import { ProductsService } from '../products.service';
 
 
 @Component({
@@ -15,23 +15,20 @@ import { Observable, tap } from 'rxjs';
 export class ProductDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private cartService: CartService, private productService: ProductsService) { }
-  // Es una inyeccion, en la que obtenemos la ruta, se ejecuta una sola vez
 
-  product: Product | undefined; // Guardamos el producto, que puede ser tipo Product o estar indefinido
-  // product!: Product; Es equivalente a la definicion anterior
-
-  //products!: Observable<{ id: number, name: string, price: number, description: string }[]>;
+  product: Product | undefined;
+  
+  products!: Observable<Product[]>;
+  productsArray: Product[] = []; 
 
   ngOnInit() { // Se ejecuta cada vez que se muestra el componente, se ejecuta SIEMPRE despues del constructor
     const routeParams = this.route.snapshot.paramMap; // La propiedad inyectada y obtiene los parametros
     const productIdFromRoute = Number(routeParams.get('productId')); // Devuelve el productId que pusimos en el html
-    this.product = products.find(product => product.id === productIdFromRoute);// Al guardarlo aqui, usable HTML de Details
-  
-    // this.products = this.productService.getProducts()
-    //   .pipe(
-    //     tap((products: Product[]) => this.product = products
-    //       .find((item: Product) => item.id === productIdFromRoute))
-    //   )
+    this.products = this.productService.getProducts();
+    this.products.subscribe((valor) => { 
+      this.productsArray = valor;     
+      this.product = this.productsArray.find(product => product.id === productIdFromRoute);   
+  })
   }
   addToCart(product: Product) {
     this.cartService.addToCart(product);
