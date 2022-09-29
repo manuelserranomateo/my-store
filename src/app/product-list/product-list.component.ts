@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import { products } from '../products';
 import { ProductsService } from '../products.service';
 import { Observable } from 'rxjs';
+import { Product } from '../products';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductListComponent implements OnInit {
                           el usar this.products haria referencia al product de la Izq */
   constructor(private productService: ProductsService) { }
 
-  products!: Observable<{id: number, name: string,price: number, description: string}[]>;
+  products!: Observable<Product[]>;
 
 
   ngOnInit(): void {
