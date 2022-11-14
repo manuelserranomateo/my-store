@@ -4,7 +4,7 @@
     <span>{{ item.price | currency }}</span>
     <!-- el currency en una Pipe que hace que se vea en la moneda que queramos -->
 </div>
-<p> <a routerLink="/shipping">Shipping Prices</a></p>
+<p> <a id="shipping_prices" routerLink="/shipping">Shipping Prices</a></p>
 
 <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
     <div>
@@ -15,5 +15,5 @@
         <label for="address">Address</label>
         <input id="address" type="text" formControlName="address">
     </div>
-    <button class="button" type="submit">Purchase</button>
+    <button id="purchase" class="button" type="submit">Purchase</button>
 </form>

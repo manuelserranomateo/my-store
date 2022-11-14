@@ -1,7 +1,7 @@
 <h2>Product Details</h2>
 <div *ngIf="product" > <!-- siempre que se buscan cosas, aseguarlo de esta manera -->
-    <h3>{{ product.name }}</h3>
-    <h4>{{ product.price | currency }}</h4>
-    <p>{{ product.description }}</p>
-    <button type="button" (click)="addToCart(product)">Buy</button>
+    <h3 id="name">{{ product.name }}</h3>
+    <h4 id="price">{{ product.price | currency }}</h4>
+    <p id="description">{{ product.description }}</p>
+    <button id="buy" type="button" (click)="addToCart(product)">Buy</button>
 </div>
