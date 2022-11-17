@@ -2,6 +2,6 @@
 <!-- async permite que itere -->
 <!-- <div class="shipping-item" *ngFor="let shipping of shippingCosts | async">   -->
     <div class="shipping-item" *ngFor="let shipping of shippingCostsArray"> <!-- otra manera de hacerlo -->
-    <span>{{ shipping.type }}</span>                                            
+    <span id="{{ shipping.type }}">{{ shipping.type }}</span>                                            
     <span>{{ shipping.price | currency }}</span>
 </div>
